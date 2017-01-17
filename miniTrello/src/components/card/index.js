@@ -2,6 +2,16 @@ import React from 'react';
 import './index.css';
 
 class Card extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        this.props.deleteItem(this.props.id);
+    }
+
     render() {
         return (
         <li className="card" >
@@ -10,7 +20,10 @@ class Card extends React.Component {
                 onDragEnd={this.props.dragEndMthd}
                 onDragStart={this.props.dragStartMthd}                     
                 >
-                <div className="viewer">{this.props.message}</div>                
+                <div className="viewer">
+                    {this.props.message}
+                    <a onClick={this.handleClick}>X</a>
+                </div>                
             </div>
         </li>
         )

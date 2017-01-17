@@ -12,7 +12,8 @@ class List extends React.Component {
             myTasks : this.props.tasks || []
         }      
 
-        this.updateItems = this.updateItems.bind(this);   
+        this.updateItems = this.updateItems.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
         // drang&drop methods     
         this.dragOver = this.dragOver.bind(this);
         this.dragStart = this.dragStart.bind(this);
@@ -25,7 +26,15 @@ class List extends React.Component {
         this.setState({myTasks: allTasks});        
     }
 
-    // drag&drop methods  HELP:https://www.html5rocks.com/es/tutorials/dnd/basics/
+    deleteItem(itemId){
+        if(confirm("Are you sure to delete this item?")){
+            this.state.myTasks.splice(itemId,1);
+            this.setState({myTasks: this.state.myTasks});
+        }
+        
+    }
+
+    // drag&drop methods  HELP:https://www.html5rocks.com/es/tutorials/dnd/basics/ , http://enome.github.io/javascript/2014/03/24/drag-and-drop-with-react-js.html
     dragOver(e){        
         e.preventDefault();
     }
@@ -60,7 +69,8 @@ class List extends React.Component {
                     return <Card key={id}  id={id}
                             message={cardInfo.message}
                             dragEndMthd={this.dragEnd}
-                            dragStartMthd={this.dragStart}       
+                            dragStartMthd={this.dragStart}
+                            deleteItem={this.deleteItem}
                              />
                 })
             }

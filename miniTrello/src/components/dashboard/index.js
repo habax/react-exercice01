@@ -28,6 +28,7 @@ class Dashboard extends React.Component {
                         />
                 })
             }
+            <footer>Habacuc Hern&aacute;ndez Ram&iacute;rez | React Introduction by C&eacute;sar P&eacute;rez </footer>
         </div>        
         )
     }
