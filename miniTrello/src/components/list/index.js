@@ -17,37 +17,47 @@ class List extends React.Component {
         this.dragOver = this.dragOver.bind(this);
         this.dragStart = this.dragStart.bind(this);
         this.dragEnd = this.dragEnd.bind(this);
+        this.drop = this.drop.bind(this);
     }    
 
     updateItems(newItem){
-        newItem.id = this.state.myTasks.length+1;
         var allTasks = this.state.myTasks.concat([newItem]);
         this.setState({myTasks: allTasks});        
     }
 
-    // drang&drop methods
+    // drag&drop methods  HELP:https://www.html5rocks.com/es/tutorials/dnd/basics/
     dragOver(e){        
-        //e.preventDefault();
-        //this.over = e.target;
-
+        e.preventDefault();
     }
     dragStart(e) {
-        this.dragged = e.currentTarget; // element do drag
+        this.dragged = e.currentTarget; // save element do drag
+
+        this.dragged.style.opacity = '0.4';
+        var data = this.state.myTasks[this.dragged.id];
+        e.dataTransfer.setData("text", JSON.stringify(data));
     }
     dragEnd(e){
-        //console.log(this.dragged, this.over );        
-        this.dragged = undefined;
-        //this.over = undefined;
+        e.currentTarget.style.opacity = '1';
+        
+        var id = this.dragged.id;
+        this.state.myTasks.splice(id,1);
+        this.setState({myTasks: this.state.myTasks});
     }
-    
+    drop(e){
+        e.preventDefault();
+        try{
+            var tmp  = JSON.parse(e.dataTransfer.getData('text'));
+            this.updateItems(tmp);
+        }catch(e){ return;}
+    }
 
     render() {
         return (
-        <ul className="my-trello-list" onDragOver={this.dragOver}>
+        <ul className="my-trello-list" onDrop={this.drop} onDragOver={this.dragOver} >
             <li><h3 className="title">{this.props.name}</h3></li>
             {
-                this.state.myTasks.map((cardInfo) => {
-                    return <Card key={cardInfo.id}  data-id={cardInfo.id}
+                this.state.myTasks.map((cardInfo,id) => {
+                    return <Card key={id}  id={id}
                             message={cardInfo.message}
                             dragEndMthd={this.dragEnd}
                             dragStartMthd={this.dragStart}       

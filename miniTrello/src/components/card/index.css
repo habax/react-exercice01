@@ -16,3 +16,8 @@
     background-color: #EDEFF0;
     /*cursor: pointer;*/
 }
+
+
+[draggable] {
+  cursor: move;
+}

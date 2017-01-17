@@ -5,7 +5,8 @@ class Card extends React.Component {
     render() {
         return (
         <li className="card" >
-            <div draggable="true"       
+            <div draggable="true"
+                id={this.props.id}
                 onDragEnd={this.props.dragEndMthd}
                 onDragStart={this.props.dragStartMthd}                     
                 >

@@ -24,3 +24,7 @@
 .my-trello-list .title {    
     margin: 5px;
 }
+
+.my-trello-list .over {
+    border: 1px dashed #000;
+}
