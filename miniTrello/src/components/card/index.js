@@ -4,8 +4,11 @@ import './index.css';
 class Card extends React.Component {
     render() {
         return (
-        <li className="card">
-            <div>
+        <li className="card" >
+            <div draggable="true"       
+                onDragEnd={this.props.dragEndMthd}
+                onDragStart={this.props.dragStartMthd}                     
+                >
                 <div className="viewer">{this.props.message}</div>                
             </div>
         </li>

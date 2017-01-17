@@ -10,9 +10,13 @@ class List extends React.Component {
         
         this.state = {
             myTasks : this.props.tasks || []
-        }        
+        }      
 
-        this.updateItems = this.updateItems.bind(this);
+        this.updateItems = this.updateItems.bind(this);   
+        // drang&drop methods     
+        this.dragOver = this.dragOver.bind(this);
+        this.dragStart = this.dragStart.bind(this);
+        this.dragEnd = this.dragEnd.bind(this);
     }    
 
     updateItems(newItem){
@@ -21,13 +25,33 @@ class List extends React.Component {
         this.setState({myTasks: allTasks});        
     }
 
+    // drang&drop methods
+    dragOver(e){        
+        //e.preventDefault();
+        //this.over = e.target;
+
+    }
+    dragStart(e) {
+        this.dragged = e.currentTarget; // element do drag
+    }
+    dragEnd(e){
+        //console.log(this.dragged, this.over );        
+        this.dragged = undefined;
+        //this.over = undefined;
+    }
+    
+
     render() {
         return (
-        <ul className="my-trello-list">
+        <ul className="my-trello-list" onDragOver={this.dragOver}>
             <li><h3 className="title">{this.props.name}</h3></li>
             {
                 this.state.myTasks.map((cardInfo) => {
-                    return <Card key={cardInfo.id} message={cardInfo.message} />
+                    return <Card key={cardInfo.id}  data-id={cardInfo.id}
+                            message={cardInfo.message}
+                            dragEndMthd={this.dragEnd}
+                            dragStartMthd={this.dragStart}       
+                             />
                 })
             }
             <li>

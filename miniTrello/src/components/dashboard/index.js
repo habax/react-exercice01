@@ -9,8 +9,8 @@ class Dashboard extends React.Component {
         
         this.state = {
             columns : [
-                            { id:1, name: "To Do", tasks: [  /*{ id:1, message: " tarea 1" }, { id:2, message: " tarea 2" }, { id:3, message: " tarea 3" }*/ ]  },
-                            { id:2, name: "Doing", tasks: [  /*{ id:1, message: " tarea 4" } */ ]},
+                            { id:1, name: "To Do", tasks: [  { id:1, message: " tarea 1" }, { id:2, message: " tarea 2" }, { id:3, message: " tarea 3" } ]  },
+                            { id:2, name: "Doing", tasks: [  { id:1, message: " tarea 4" }  ]},
                             { id:3, name: "Done", tasks: [ ]  }
                       ]
         }        
