@@ -1,0 +1,47 @@
+.editor{
+
+}
+
+.editor .show{
+    display:block;
+}
+
+.editor .hidden{
+    display:none;
+}
+
+.editor textarea{
+    resize: none;
+    outline: none;
+    border: none; 
+
+    width: 95%;
+    padding: 10px;
+    
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow:    0px 1px 2px 0px rgba(50, 50, 50, 0.25);
+    box-shadow:         0px 1px 2px 0px rgba(50, 50, 50, 0.25);
+}
+
+.editor button[type="submit"] {
+    background: -webkit-linear-gradient(top,#61BD4F 0,#5AAC44 100%);
+    background: linear-gradient(to bottom,#61BD4F 0,#5AAC44 100%);
+    box-shadow: 0 1px 0 #3F6F21;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.editor a[type="button"]{
+    width: 25px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.editor a[type="button"]:hover{
+    color: #4d4d4d;
+    
+}

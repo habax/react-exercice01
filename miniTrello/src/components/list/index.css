@@ -1,0 +1,26 @@
+.my-trello-list {
+    background-color: #E2E4E6;
+    list-style: none;
+    border: 1px solid #a1a1a1;
+    border-radius: 4px;
+    padding: 10px 5px;
+    color: gray;
+
+    flex: 0 1 30%;
+}
+
+
+.my-trello-list .add-a-card {
+    display: block;
+    padding: 5px;
+}
+
+.my-trello-list .add-a-card:hover {
+    background: #CDD2D4;
+    color: #4d4d4d;
+}
+
+
+.my-trello-list .title {    
+    margin: 5px;
+}

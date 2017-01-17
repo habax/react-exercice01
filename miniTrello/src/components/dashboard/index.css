@@ -1,0 +1,7 @@
+.dashboard{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
+    width: 100%;
+}
